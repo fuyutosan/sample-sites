@@ -1,72 +1,37 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>デザインサンプル集｜ひだまり珈琲店</title>
-<style>
-  body{
-    word-break: keep-all; overflow-wrap: anywhere; text-wrap: pretty;
-    margin:0; font-family:"Yu Gothic","Hiragino Kaku Gothic ProN",sans-serif;
-    background:#faf9f6; color:#222;
-  }
-  h1,h2,h3,h4{ text-wrap: balance; }
-  .nb{ white-space: nowrap; }
-
-  .shell{ max-width:960px; margin:0 auto; padding:56px 24px; }
-  h1{ font-size:1.6rem; margin-bottom:8px; }
-  p.lead{ opacity:.75; margin-bottom:36px; }
-  .grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:20px; }
-  a.tile{
-    display:block; text-decoration:none; color:#222;
-    border:1px solid #ddd; border-radius:12px; padding:24px;
-    background:#fff; transition:box-shadow .15s;
-  }
-  a.tile:hover{ box-shadow:0 6px 20px rgba(0,0,0,.08); }
-  a.tile .num{ font-size:.75rem; opacity:.5; }
-  a.tile h3{ margin:6px 0 4px; font-size:1.05rem; }
-  a.tile p{ font-size:.85rem; opacity:.7; margin:0; }
-  footer{ margin-top:48px; font-size:.8rem; opacity:.55; }
-</style>
-</head>
-<body>
-<div class="shell">
-  <h1>デザインサンプル集</h1>
-  <p class="lead">同じ内容（架空のカフェ「<span class="nb">ひだまり珈琲店</span>」）で、デザインの方向性だけを変えた見本です。お好みの方向性を選んでいただければ、そこから作っていきます。</p>
-
-  <div class="grid">
-    <a class="tile" href="01-natural.html"><div class="num">01</div><h3>ナチュラル・木目調</h3><p>あたたかみ・手作り感を重視した店舗系デザイン</p></a>
-    <a class="tile" href="02-mono.html"><div class="num">02</div><h3>モノトーン・ミニマル</h3><p>白黒・余白多めの上質感のあるデザイン</p></a>
-    <a class="tile" href="03-pastel.html"><div class="num">03</div><h3>ポップ・パステル</h3><p>親しみやすく可愛らしい、若年層向けデザイン</p></a>
-    <a class="tile" href="04-wamodern.html"><div class="num">04</div><h3>和モダン</h3><p>藍色×生成りの落ち着いた和のデザイン</p></a>
-    <a class="tile" href="05-dark.html"><div class="num">05</div><h3>インダストリアル・ダーク</h3><p>黒背景×差し色でスタイリッシュな印象</p></a>
-    <a class="tile" href="06-elegant.html"><div class="num">06</div><h3>エレガント・ゴールド</h3><p>黒×金の高級感あるデザイン</p></a>
-    <a class="tile" href="07-vintage.html"><div class="num">07</div><h3>ヴィンテージ・クラフト紙</h3><p>紙質感・レトロな雰囲気のデザイン</p></a>
-    <a class="tile" href="08-grid.html"><div class="num">08</div><h3>シンプル・グリッド</h3><p>雑誌風グリッドレイアウトのモダンなデザイン</p></a>
-  </div>
-
-  <footer>
-    これはクラウドワークス等の提案用に作成したサンプル集です。実在の店舗ではありません。
-  </footer>
-</div>
-
-<script type="module">
-  function tidyCJKWhitespace(root){
-    const CJK = /[　-ヿ㐀-䶿一-鿿ｦ-ﾟ]/;
-    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
-    let n;
-    while((n = walker.nextNode())){
-      n.nodeValue = n.nodeValue.replace(
-        /([^\s])[ \t]*\n[ \t]*([^\s])/g,
-        (m, a, b) => CJK.test(a) && CJK.test(b) ? a + b : a + ' ' + b
-      );
-    }
-  }
-  try{
-    const { loadDefaultJapaneseParser } = await import('https://cdn.jsdelivr.net/npm/budoux@0.6.2/+esm');
-    const parser = loadDefaultJapaneseParser();
-    document.querySelectorAll('.shell').forEach(el => { tidyCJKWhitespace(el); parser.applyToElement(el); });
-  }catch(e){}
-</script>
-</body>
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ひだまり珈琲店 — 30のデザイン展</title><style>
+:root{--ink:#171717;--paper:#eeeae2;--acid:#d9ff50}*{box-sizing:border-box}html,body{margin:0;background:var(--paper);color:var(--ink)}body{font-family:Arial,"Yu Gothic",sans-serif;word-break:keep-all;overflow-wrap:anywhere;text-wrap:pretty}a{color:inherit}.mast{padding:clamp(24px,5vw,72px);border-bottom:2px solid var(--ink);display:grid;grid-template-columns:1.2fr .8fr;gap:5vw;align-items:end}.eyebrow{font:700 12px/1.2 monospace;letter-spacing:.15em}.mast h1{font-size:clamp(44px,10vw,150px);line-height:.82;letter-spacing:-.08em;margin:20px 0 0;max-width:900px}.intro{max-width:310px;font-size:16px;line-height:1.7;margin:0}.intro strong{font-size:22px;display:block;line-height:1.15;margin-bottom:12px}.filters{padding:18px clamp(24px,5vw,72px);border-bottom:1px solid var(--ink);display:flex;gap:8px;flex-wrap:wrap;position:sticky;top:0;background:rgba(238,234,226,.94);z-index:3}.filters button{border:1px solid var(--ink);background:transparent;padding:10px 15px;min-height:42px;font:inherit;cursor:pointer}.filters button[aria-pressed=true],.filters button:hover{background:var(--ink);color:var(--acid)}.catalog{padding:clamp(24px,5vw,72px);display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(18px,3vw,44px) 20px}.item{grid-column:span 4;display:block;text-decoration:none;border-top:2px solid var(--ink);padding-top:12px}.item:nth-child(3n+2){grid-column:span 5;margin-top:12vw}.item:nth-child(3n){grid-column:span 3;margin-top:4vw}.thumb{aspect-ratio:16/10;display:block;overflow:hidden;background:#d9d4c9;border:1px solid var(--ink)}.thumb img{width:100%;height:100%;object-fit:cover;display:block}.meta{display:flex;justify-content:space-between;gap:8px;margin-top:11px;font:700 11px/1.3 monospace;text-transform:uppercase}.item h2{font-size:clamp(20px,2.2vw,34px);line-height:.95;letter-spacing:-.04em;margin:9px 0 4px}.tag{font-size:11px;border:1px solid var(--ink);padding:3px 6px;white-space:nowrap}.count{padding:0 clamp(24px,5vw,72px) 40px;font:12px monospace}.item[hidden]{display:none}@media(max-width:640px){.mast{display:block;padding:28px 18px 34px}.mast h1{font-size:clamp(54px,17vw,88px);margin:28px 0 34px}.intro{max-width:none;font-size:15px}.filters{padding:10px 18px;gap:6px;position:static}.filters button{flex:1 1 calc(50% - 6px);padding:11px 8px}.catalog{display:block;padding:26px 18px}.item,.item:nth-child(3n+2),.item:nth-child(3n){margin:0 0 38px;display:block}.thumb{aspect-ratio:4/3}.item h2{font-size:29px}.count{padding:0 18px 28px}}
+</style></head><body><header class="mast"><div><div class="eyebrow">HIDAMARI COFFEE / DESIGN EXHIBITION 2026</div><h1>30 ways<br>to make<br>coffee.</h1></div><p class="intro"><strong>ひだまり珈琲店</strong>同じ店、同じメニュー、30通りの見た目。街の片隅で、香り立つ一杯を届けるためのデザイン展です。</p></header><nav class="filters" aria-label="カテゴリー"><button type="button" data-filter="all" aria-pressed="true">ALL / 30</button><button type="button" data-filter="editorial" aria-pressed="false">EDITORIAL</button><button type="button" data-filter="print-heritage" aria-pressed="false">PRINT</button><button type="button" data-filter="modernist" aria-pressed="false">MODERN</button><button type="button" data-filter="motion" aria-pressed="false">MOTION</button><button type="button" data-filter="material-organic" aria-pressed="false">MATERIAL</button></nav><main class="catalog">
+<!-- gallery entries are intentionally explicit for static indexing -->
+<a class="item" data-category="editorial" href="01-apothecary-editorial.html"><span class="thumb"><img src="thumbnails/01-apothecary-editorial.png" alt="薬局ラベル風エディトリアル"></span><span class="meta"><span>01 / editorial</span><span class="tag">STILL</span></span><h2>Apothecary Editorial</h2></a>
+<a class="item" data-category="editorial" href="02-swiss-grid.html"><span class="thumb"><img src="thumbnails/02-swiss-grid.png" alt="スイス・モジュラーグリッド"></span><span class="meta"><span>02 / editorial</span><span class="tag">STILL</span></span><h2>Swiss Grid</h2></a>
+<a class="item" data-category="editorial" href="03-vertical-japan.html"><span class="thumb"><img src="thumbnails/03-vertical-japan.png" alt="縦書き和文ポスター"></span><span class="meta"><span>03 / editorial</span><span class="tag">STILL</span></span><h2>Vertical Japan</h2></a>
+<a class="item" data-category="editorial" href="04-luxury-serif.html"><span class="thumb"><img src="thumbnails/04-luxury-serif.png" alt="ハイコントラスト・ラグジュアリー"></span><span class="meta"><span>04 / editorial</span><span class="tag">STILL</span></span><h2>Luxury Serif</h2></a>
+<a class="item" data-category="editorial" href="05-mono-editorial.html"><span class="thumb"><img src="thumbnails/05-mono-editorial.png" alt="モノクロ・ファッション誌"></span><span class="meta"><span>05 / editorial</span><span class="tag">STILL</span></span><h2>Mono Editorial</h2></a>
+<a class="item" data-category="editorial" href="06-architectural-plan.html"><span class="thumb"><img src="thumbnails/06-architectural-plan.png" alt="建築図面・フロアプラン"></span><span class="meta"><span>06 / editorial</span><span class="tag">STILL</span></span><h2>Architectural Plan</h2></a>
+<a class="item" data-category="print-heritage" href="07-letterpress-ticket.html"><span class="thumb"><img src="thumbnails/07-letterpress-ticket.png" alt="活版印刷チケット"></span><span class="meta"><span>07 / print</span><span class="tag">STILL</span></span><h2>Letterpress Ticket</h2></a>
+<a class="item" data-category="print-heritage" href="08-showa-signboard.html"><span class="thumb"><img src="thumbnails/08-showa-signboard.png" alt="1970年代喫茶店看板"></span><span class="meta"><span>08 / print</span><span class="tag">STILL</span></span><h2>Showa Signboard</h2></a>
+<a class="item" data-category="print-heritage" href="09-risograph-zine.html"><span class="thumb"><img src="thumbnails/09-risograph-zine.png" alt="リソグラフZINE"></span><span class="meta"><span>09 / print</span><span class="tag">STILL</span></span><h2>Risograph Zine</h2></a>
+<a class="item" data-category="print-heritage" href="10-matchbox-label.html"><span class="thumb"><img src="thumbnails/10-matchbox-label.png" alt="マッチ箱ラベル"></span><span class="meta"><span>10 / print</span><span class="tag">STILL</span></span><h2>Matchbox Label</h2></a>
+<a class="item" data-category="print-heritage" href="11-art-nouveau.html"><span class="thumb"><img src="thumbnails/11-art-nouveau.png" alt="アール・ヌーヴォー装飾"></span><span class="meta"><span>11 / print</span><span class="tag">STILL</span></span><h2>Art Nouveau</h2></a>
+<a class="item" data-category="print-heritage" href="12-coffee-package.html"><span class="thumb"><img src="thumbnails/12-coffee-package.png" alt="コーヒー豆パッケージ"></span><span class="meta"><span>12 / print</span><span class="tag">STILL</span></span><h2>Coffee Package</h2></a>
+<a class="item" data-category="modernist" href="13-neo-brutalist.html"><span class="thumb"><img src="thumbnails/13-neo-brutalist.png" alt="ネオブルータリスト店舗"></span><span class="meta"><span>13 / modern</span><span class="tag">MOTION</span></span><h2>Neo Brutalist</h2></a>
+<a class="item" data-category="modernist" href="14-bauhaus.html"><span class="thumb"><img src="thumbnails/14-bauhaus.png" alt="バウハウス幾何学"></span><span class="meta"><span>14 / modern</span><span class="tag">STILL</span></span><h2>Bauhaus</h2></a>
+<a class="item" data-category="modernist" href="15-constructivist.html"><span class="thumb"><img src="thumbnails/15-constructivist.png" alt="構成主義ポスター"></span><span class="meta"><span>15 / modern</span><span class="tag">STILL</span></span><h2>Constructivist</h2></a>
+<a class="item" data-category="modernist" href="16-maximalist.html"><span class="thumb"><img src="thumbnails/16-maximalist.png" alt="タイポグラフィ・マキシマリズム"></span><span class="meta"><span>16 / modern</span><span class="tag">MOTION</span></span><h2>Maximalist Type</h2></a>
+<a class="item" data-category="modernist" href="17-dopamine-y2k.html"><span class="thumb"><img src="thumbnails/17-dopamine-y2k.png" alt="ドーパミンカラー・Y2K"></span><span class="meta"><span>17 / modern</span><span class="tag">MOTION</span></span><h2>Dopamine Y2K</h2></a>
+<a class="item" data-category="modernist" href="18-checkerboard.html"><span class="thumb"><img src="thumbnails/18-checkerboard.png" alt="チェッカーボード・スポーツ誌"></span><span class="meta"><span>18 / modern</span><span class="tag">STILL</span></span><h2>Checkerboard</h2></a>
+<a class="item" data-category="motion" href="19-kinetic-type.html"><span class="thumb"><img src="thumbnails/19-kinetic-type.png" alt="キネティック・タイポグラフィ"></span><span class="meta"><span>19 / motion</span><span class="tag">MOTION</span></span><h2>Kinetic Type</h2></a>
+<a class="item" data-category="motion" href="20-terminal-board.html"><span class="thumb"><img src="thumbnails/20-terminal-board.png" alt="ターミナル・発注ボード"></span><span class="meta"><span>20 / motion</span><span class="tag">MOTION</span></span><h2>Terminal Board</h2></a>
+<a class="item" data-category="motion" href="21-retrofuture-manual.html"><span class="thumb"><img src="thumbnails/21-retrofuture-manual.png" alt="レトロフューチャー取扱説明書"></span><span class="meta"><span>21 / motion</span><span class="tag">MOTION</span></span><h2>Retrofuture Manual</h2></a>
+<a class="item" data-category="motion" href="22-radial-navigation.html"><span class="thumb"><img src="thumbnails/22-radial-navigation.png" alt="円形・軌道型ナビゲーション"></span><span class="meta"><span>22 / motion</span><span class="tag">MOTION</span></span><h2>Radial Navigation</h2></a>
+<a class="item" data-category="motion" href="23-css-3d-package.html"><span class="thumb"><img src="thumbnails/23-css-3d-package.png" alt="CSS立体パッケージ"></span><span class="meta"><span>23 / motion</span><span class="tag">MOTION</span></span><h2>CSS 3D Package</h2></a>
+<a class="item" data-category="motion" href="24-split-scroll.html"><span class="thumb"><img src="thumbnails/24-split-scroll.png" alt="左右分割スクロールストーリー"></span><span class="meta"><span>24 / motion</span><span class="tag">MOTION</span></span><h2>Split Scroll</h2></a>
+<a class="item" data-category="material-organic" href="25-paper-collage.html"><span class="thumb"><img src="thumbnails/25-paper-collage.png" alt="切り紙コラージュ"></span><span class="meta"><span>25 / material</span><span class="tag">STILL</span></span><h2>Paper Collage</h2></a>
+<a class="item" data-category="material-organic" href="26-handdrawn-chalk.html"><span class="thumb"><img src="thumbnails/26-handdrawn-chalk.png" alt="手描きチョーク・マーカー"></span><span class="meta"><span>26 / material</span><span class="tag">STILL</span></span><h2>Handdrawn Chalk</h2></a>
+<a class="item" data-category="material-organic" href="27-ink-organic.html"><span class="thumb"><img src="thumbnails/27-ink-organic.png" alt="墨・インクの有機的構成"></span><span class="meta"><span>27 / material</span><span class="tag">STILL</span></span><h2>Ink Organic</h2></a>
+<a class="item" data-category="material-organic" href="28-horizontal-story.html"><span class="thumb"><img src="thumbnails/28-horizontal-story.png" alt="横スクロール絵巻"></span><span class="meta"><span>28 / material</span><span class="tag">MOTION</span></span><h2>Horizontal Story</h2></a>
+<a class="item" data-category="material-organic" href="29-sunlight-shadow.html"><span class="thumb"><img src="thumbnails/29-sunlight-shadow.png" alt="木漏れ日と影"></span><span class="meta"><span>29 / material</span><span class="tag">STILL</span></span><h2>Sunlight &amp; Shadow</h2></a>
+<a class="item" data-category="material-organic" href="30-low-impact-text.html"><span class="thumb"><img src="thumbnails/30-low-impact-text.png" alt="超軽量テキストオンリー"></span><span class="meta"><span>30 / material</span><span class="tag">STILL</span></span><h2>Low Impact Text</h2></a>
+</main><div class="count">30 DESIGNS / ONE COFFEE SHOP / ひだまり珈琲店</div><script>document.querySelectorAll('[data-filter]').forEach(button=>button.addEventListener('click',()=>{const filter=button.dataset.filter;document.querySelectorAll('[data-filter]').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));document.querySelectorAll('.item').forEach(item=>{item.hidden=filter!=='all'&&item.dataset.category!==filter})}));</script></body></html>
 </html>
+<style>.item[hidden]{display:none!important}</style>
