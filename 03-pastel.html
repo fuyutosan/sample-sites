@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ひだまり珈琲店｜ポップ・パステル</title>
+<style>
+  body{
+    word-break: keep-all; overflow-wrap: anywhere; text-wrap: pretty;
+    margin:0; font-family:"Hiragino Maru Gothic ProN","Rounded Mplus 1c",sans-serif;
+    background:#fff0f5; color:#5a3d4a;
+  }
+  h1,h2,h3,h4{ text-wrap: balance; }
+  .nb{ white-space: nowrap; }
+  .url,code{ word-break: break-all; }
+
+  .shell{ max-width:900px; margin:0 auto; }
+  header{
+    padding:64px 24px; text-align:center;
+    background:linear-gradient(135deg,#ffd6e8,#c9f0e0);
+    border-radius:0 0 60px 60px;
+  }
+  header h1{ font-size:2.4rem; margin:0 0 12px; color:#e07a9c; }
+  section{ padding:48px 24px; }
+  .kodawari{ display:flex; flex-wrap:wrap; gap:20px; justify-content:center; }
+  .card{
+    background:#fff; border-radius:32px; padding:26px; width:240px; text-align:center;
+    box-shadow:0 8px 20px rgba(224,122,156,.2);
+  }
+  .card .emoji{ font-size:2.5rem; }
+  .card h3{ color:#e07a9c; margin:10px 0; }
+  .menu{ list-style:none; padding:0; max-width:400px; margin:0 auto; }
+  .menu li{
+    display:flex; justify-content:space-between; padding:14px 20px; margin-bottom:10px;
+    background:#fff; border-radius:16px; box-shadow:0 4px 10px rgba(0,0,0,.05);
+  }
+  footer{ background:#ffd6e8; text-align:center; padding:36px 24px; border-radius:60px 60px 0 0; }
+  .btn{
+    display:inline-block; margin-top:16px; padding:16px 36px; border-radius:999px;
+    background:#e07a9c; color:#fff; text-decoration:none; font-weight:bold;
+    box-shadow:0 6px 0 #c15c7e;
+  }
+</style>
+</head>
+<body>
+<div class="shell">
+  <header>
+    <h1>🌼 <span class="nb">ひだまり珈琲店</span> 🌼</h1>
+    <p>街の片隅で、香り立つ一杯を</p>
+    <a class="btn" href="#">ご予約はこちら</a>
+  </header>
+
+  <section class="kodawari">
+    <div class="card"><div class="emoji">☕</div><h3>自家焙煎</h3><p>毎朝、店の奥で豆を焙煎しています。</p></div>
+    <div class="card"><div class="emoji">🌱</div><h3>産地直送</h3><p>生産者から直接仕入れた豆だけを使用。</p></div>
+    <div class="card"><div class="emoji">🔥</div><h3>手網焙煎</h3><p>週末は店頭で実演もしています。</p></div>
+  </section>
+
+  <section>
+    <h2 style="text-align:center;">🍰 メニュー</h2>
+    <ul class="menu">
+      <li><span>ブレンド</span><span>500円</span></li>
+      <li><span>カフェラテ</span><span>550円</span></li>
+      <li><span>季節のケーキ</span><span>480円</span></li>
+    </ul>
+  </section>
+
+  <footer>
+    <p><span class="nb">みなと中央駅</span>から徒歩5分</p>
+    <p>営業時間：8:00〜19:00（日曜定休）</p>
+  </footer>
+</div>
+
+<script type="module">
+  function tidyCJKWhitespace(root){
+    const CJK = /[　-ヿ㐀-䶿一-鿿ｦ-ﾟ]/;
+    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+    let n;
+    while((n = walker.nextNode())){
+      n.nodeValue = n.nodeValue.replace(
+        /([^\s])[ \t]*\n[ \t]*([^\s])/g,
+        (m, a, b) => CJK.test(a) && CJK.test(b) ? a + b : a + ' ' + b
+      );
+    }
+  }
+  try{
+    const { loadDefaultJapaneseParser } = await import('https://cdn.jsdelivr.net/npm/budoux@0.6.2/+esm');
+    const parser = loadDefaultJapaneseParser();
+    document.querySelectorAll('.shell').forEach(el => { tidyCJKWhitespace(el); parser.applyToElement(el); });
+  }catch(e){}
+</script>
+</body>
+</html>
