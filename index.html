@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>デザインサンプル集｜ひだまり珈琲店</title>
+<style>
+  body{
+    word-break: keep-all; overflow-wrap: anywhere; text-wrap: pretty;
+    margin:0; font-family:"Yu Gothic","Hiragino Kaku Gothic ProN",sans-serif;
+    background:#faf9f6; color:#222;
+  }
+  h1,h2,h3,h4{ text-wrap: balance; }
+  .nb{ white-space: nowrap; }
+
+  .shell{ max-width:960px; margin:0 auto; padding:56px 24px; }
+  h1{ font-size:1.6rem; margin-bottom:8px; }
+  p.lead{ opacity:.75; margin-bottom:36px; }
+  .grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:20px; }
+  a.tile{
+    display:block; text-decoration:none; color:#222;
+    border:1px solid #ddd; border-radius:12px; padding:24px;
+    background:#fff; transition:box-shadow .15s;
+  }
+  a.tile:hover{ box-shadow:0 6px 20px rgba(0,0,0,.08); }
+  a.tile .num{ font-size:.75rem; opacity:.5; }
+  a.tile h3{ margin:6px 0 4px; font-size:1.05rem; }
+  a.tile p{ font-size:.85rem; opacity:.7; margin:0; }
+  footer{ margin-top:48px; font-size:.8rem; opacity:.55; }
+</style>
+</head>
+<body>
+<div class="shell">
+  <h1>デザインサンプル集</h1>
+  <p class="lead">同じ内容（架空のカフェ「<span class="nb">ひだまり珈琲店</span>」）で、デザインの方向性だけを変えた見本です。お好みの方向性を選んでいただければ、そこから作っていきます。</p>
+
+  <div class="grid">
+    <a class="tile" href="01-natural.html"><div class="num">01</div><h3>ナチュラル・木目調</h3><p>あたたかみ・手作り感を重視した店舗系デザイン</p></a>
+    <a class="tile" href="02-mono.html"><div class="num">02</div><h3>モノトーン・ミニマル</h3><p>白黒・余白多めの上質感のあるデザイン</p></a>
+    <a class="tile" href="03-pastel.html"><div class="num">03</div><h3>ポップ・パステル</h3><p>親しみやすく可愛らしい、若年層向けデザイン</p></a>
+    <a class="tile" href="04-wamodern.html"><div class="num">04</div><h3>和モダン</h3><p>藍色×生成りの落ち着いた和のデザイン</p></a>
+    <a class="tile" href="05-dark.html"><div class="num">05</div><h3>インダストリアル・ダーク</h3><p>黒背景×差し色でスタイリッシュな印象</p></a>
+    <a class="tile" href="06-elegant.html"><div class="num">06</div><h3>エレガント・ゴールド</h3><p>黒×金の高級感あるデザイン</p></a>
+    <a class="tile" href="07-vintage.html"><div class="num">07</div><h3>ヴィンテージ・クラフト紙</h3><p>紙質感・レトロな雰囲気のデザイン</p></a>
+    <a class="tile" href="08-grid.html"><div class="num">08</div><h3>シンプル・グリッド</h3><p>雑誌風グリッドレイアウトのモダンなデザイン</p></a>
+  </div>
+
+  <footer>
+    これはクラウドワークス等の提案用に作成したサンプル集です。実在の店舗ではありません。
+  </footer>
+</div>
+
+<script type="module">
+  function tidyCJKWhitespace(root){
+    const CJK = /[　-ヿ㐀-䶿一-鿿ｦ-ﾟ]/;
+    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+    let n;
+    while((n = walker.nextNode())){
+      n.nodeValue = n.nodeValue.replace(
+        /([^\s])[ \t]*\n[ \t]*([^\s])/g,
+        (m, a, b) => CJK.test(a) && CJK.test(b) ? a + b : a + ' ' + b
+      );
+    }
+  }
+  try{
+    const { loadDefaultJapaneseParser } = await import('https://cdn.jsdelivr.net/npm/budoux@0.6.2/+esm');
+    const parser = loadDefaultJapaneseParser();
+    document.querySelectorAll('.shell').forEach(el => { tidyCJKWhitespace(el); parser.applyToElement(el); });
+  }catch(e){}
+</script>
+</body>
+</html>
