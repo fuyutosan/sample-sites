@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ひだまり珈琲店｜インダストリアル・ダーク</title>
+<style>
+  body{
+    word-break: keep-all; overflow-wrap: anywhere; text-wrap: pretty;
+    margin:0; font-family:"Yu Gothic","Helvetica Neue",sans-serif;
+    background:#141414; color:#e8e8e8;
+  }
+  h1,h2,h3,h4{ text-wrap: balance; }
+  .nb{ white-space: nowrap; }
+  .url,code{ word-break: break-all; }
+
+  .shell{ max-width:900px; margin:0 auto; }
+  header{
+    padding:100px 24px 70px; text-align:center;
+    background:
+      radial-gradient(circle at 20% 20%, rgba(255,180,80,.15), transparent 40%),
+      #141414;
+    border-bottom:2px solid #ff8c42;
+  }
+  header h1{ font-size:2.6rem; margin:0 0 14px; color:#ff8c42; text-shadow:0 0 20px rgba(255,140,66,.4); }
+  section{ padding:56px 24px; }
+  .kodawari{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:20px; }
+  .card{
+    background:#1e1e1e; border:1px solid #333; padding:26px;
+    border-left:3px solid #ff8c42;
+  }
+  .card h3{ color:#ff8c42; margin-top:0; }
+  .menu{ list-style:none; padding:0; max-width:420px; margin:0 auto; }
+  .menu li{ display:flex; justify-content:space-between; padding:16px 0; border-bottom:1px solid #333; font-family:monospace; }
+  footer{ text-align:center; padding:40px 24px; border-top:1px solid #333; opacity:.8; }
+  .btn{
+    display:inline-block; margin-top:20px; padding:16px 40px;
+    background:#ff8c42; color:#141414; text-decoration:none; font-weight:bold;
+  }
+</style>
+</head>
+<body>
+<div class="shell">
+  <header>
+    <h1><span class="nb">ひだまり珈琲店</span></h1>
+    <p>街の片隅で、香り立つ一杯を</p>
+    <a class="btn" href="#">ご予約はこちら</a>
+  </header>
+
+  <section class="kodawari">
+    <div class="card"><h3>#01 自家焙煎</h3><p>毎朝、店の奥で豆を焙煎しています。</p></div>
+    <div class="card"><h3>#02 産地直送</h3><p>生産者から直接仕入れた豆だけを使用。</p></div>
+    <div class="card"><h3>#03 手網焙煎</h3><p>週末は店頭で実演もしています。</p></div>
+  </section>
+
+  <section>
+    <h2>MENU</h2>
+    <ul class="menu">
+      <li><span>ブレンド</span><span>¥500</span></li>
+      <li><span>カフェラテ</span><span>¥550</span></li>
+      <li><span>季節のケーキ</span><span>¥480</span></li>
+    </ul>
+  </section>
+
+  <footer>
+    <p><span class="nb">みなと中央駅</span>から徒歩5分／8:00-19:00（日曜定休）</p>
+  </footer>
+</div>
+
+<script type="module">
+  function tidyCJKWhitespace(root){
+    const CJK = /[　-ヿ㐀-䶿一-鿿ｦ-ﾟ]/;
+    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+    let n;
+    while((n = walker.nextNode())){
+      n.nodeValue = n.nodeValue.replace(
+        /([^\s])[ \t]*\n[ \t]*([^\s])/g,
+        (m, a, b) => CJK.test(a) && CJK.test(b) ? a + b : a + ' ' + b
+      );
+    }
+  }
+  try{
+    const { loadDefaultJapaneseParser } = await import('https://cdn.jsdelivr.net/npm/budoux@0.6.2/+esm');
+    const parser = loadDefaultJapaneseParser();
+    document.querySelectorAll('.shell').forEach(el => { tidyCJKWhitespace(el); parser.applyToElement(el); });
+  }catch(e){}
+</script>
+</body>
+</html>
