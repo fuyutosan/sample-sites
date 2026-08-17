@@ -31,7 +31,7 @@ def check_page(path: Path):
         if not all(re.search(rf'{attr}=["\'][^"\']+',tag,re.I) for attr in ("alt","width","height")): errors.append("image attributes missing")
     if re.search(r'href=["\']https?://|src=["\']https?://', text, re.I): errors.append("external URL not allowed")
     if re.search(r"word-break\s*:\s*keep-all", text, re.I): errors.append("keep-all must not apply globally")
-    for rule in (r"word-break\s*:\s*normal", r"line-break\s*:\s*strict", r"overflow-wrap\s*:\s*anywhere", r"text-wrap\s*:\s*pretty", r"prefers-reduced-motion"):
+    for rule in (r"word-break\s*:\s*normal", r"word-break\s*:\s*auto-phrase", r"line-break\s*:\s*strict", r"overflow-wrap\s*:\s*break-word", r"text-wrap\s*:\s*pretty", r"prefers-reduced-motion"):
         if not re.search(rule, text, re.I): errors.append(f"responsive/accessibility rule missing: {rule}")
     if not re.search(r"@media[^{}]+max-width", text, re.I): errors.append("mobile media rule missing")
     return errors
