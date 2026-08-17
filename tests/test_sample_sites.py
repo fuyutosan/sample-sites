@@ -82,6 +82,18 @@ class FlagshipTests(unittest.TestCase):
             )
             self.assertEqual(lines, expected_lines, filename)
 
+    def test_japanese_prose_uses_phrase_aware_wrapping(self):
+        css = read("flagship.css")
+        body_rule = re.search(r"body\s*\{([^}]*)\}", css, re.I | re.S)
+        self.assertIsNotNone(body_rule)
+        declarations = body_rule.group(1)
+        self.assertRegex(declarations, r"word-break\s*:\s*normal\s*;")
+        self.assertRegex(declarations, r"word-break\s*:\s*auto-phrase\s*;")
+        self.assertRegex(declarations, r"overflow-wrap\s*:\s*break-word\s*;")
+        self.assertNotRegex(declarations, r"overflow-wrap\s*:\s*anywhere")
+        for filename in EXPECTED:
+            self.assertRegex(read(filename), r'<html\s+lang=["\']ja["\']', filename)
+
     def test_every_page_contains_canonical_shop_facts_and_menu(self):
         facts = [
             self.shop["station"], *self.shop["hours"].values(),
