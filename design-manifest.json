@@ -1,0 +1,66 @@
+{
+  "version": 2,
+  "shop": "content/shop.json",
+  "designs": [
+    {
+      "slug": "hikari-editorial",
+      "file": "01-hikari-editorial.html",
+      "title": "Hikari Editorial",
+      "strategy": "店の世界観と品質で来店させる",
+      "background": "white",
+      "primaryCta": "今日のメニューを見る",
+      "heroAsset": "interior-wide.webp",
+      "audience": "朝の時間を大切にする近隣客"
+    },
+    {
+      "slug": "daily-utility",
+      "file": "02-daily-utility.html",
+      "title": "Daily Utility",
+      "strategy": "メニューと営業時間を最短で届ける",
+      "background": "white",
+      "primaryCta": "メニューを見る",
+      "heroAsset": "house-coffee.webp",
+      "audience": "出勤前の忙しいスマホ利用者"
+    },
+    {
+      "slug": "shiro-sumi",
+      "file": "03-shiro-sumi.html",
+      "title": "Shiro Sumi",
+      "strategy": "現代的な和の職人性を伝える",
+      "background": "white",
+      "primaryCta": "自家焙煎を知る",
+      "heroAsset": "handdrip-close.webp",
+      "audience": "日本らしい上質な体験を探す人"
+    },
+    {
+      "slug": "local-journal",
+      "file": "04-local-journal.html",
+      "title": "Local Journal",
+      "strategy": "地域の常連客と再訪を増やす",
+      "background": "white",
+      "primaryCta": "今週のニュース",
+      "heroAsset": "community-scene.webp",
+      "audience": "近隣住民とコミュニティ"
+    },
+    {
+      "slug": "roast-lab",
+      "file": "05-roast-lab.html",
+      "title": "Roast Lab",
+      "strategy": "透明性と豆の技術力を売る",
+      "background": "cool-gray",
+      "primaryCta": "好みから豆を探す",
+      "heroAsset": "beans-package.webp",
+      "audience": "コーヒー豆を選びたい愛好家"
+    },
+    {
+      "slug": "afterglow",
+      "file": "06-afterglow.html",
+      "title": "Afterglow",
+      "strategy": "午後の体験を高級感ある時間として訴求する",
+      "background": "dark",
+      "primaryCta": "午後の席を見る",
+      "heroAsset": "cheesecake-tart.webp",
+      "audience": "スイーツと余白を楽しむ人"
+    }
+  ]
+}

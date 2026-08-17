@@ -1,0 +1,14 @@
+{
+  "name": "ひだまり珈琲店",
+  "sampleNotice": "これは架空店舗のWeb制作サンプルです。",
+  "concept": "朝7時30分から、街の一日を整える",
+  "address": "〒100-0005 東京都架空区みなと中央2-14-6",
+  "station": "みなと中央駅 南口から徒歩3分",
+  "hours": {"weekday": "平日 7:30〜19:00", "holiday": "土日祝 8:00〜18:00", "closed": "火曜日"},
+  "seats": "店内28席・テラス6席",
+  "amenities": ["Wi-Fi", "電源8席", "ベビーカー入店", "キャッシュレス", "テイクアウト", "テラスのみペット可"],
+  "roastDays": "火曜日・金曜日",
+  "menu": [
+    {"category":"coffee","name":"ハウスブレンド","price":"550円"},{"category":"coffee","name":"シングルオリジン・ハンドドリップ","price":"680円〜"},{"category":"coffee","name":"カフェラテ","price":"630円"},{"category":"coffee","name":"コールドブリュー","price":"620円"},{"category":"drink","name":"自家製レモネード","price":"620円"},{"category":"drink","name":"季節のドリンク","price":"720円"},{"category":"morning","name":"厚切りトースト・卵・サラダのモーニング","price":"890円"},{"category":"morning","name":"あんバタートーストセット","price":"820円"},{"category":"lunch","name":"季節のスープとフォカッチャ","price":"1,180円"},{"category":"lunch","name":"自家製たまごサンドプレート","price":"1,100円"},{"category":"sweet","name":"固めプリン","price":"580円"},{"category":"sweet","name":"ベイクドチーズケーキ","price":"620円"},{"category":"sweet","name":"季節のタルト","price":"680円"},{"category":"retail","name":"コーヒー豆200g","price":"1,600円〜"},{"category":"retail","name":"ドリップバッグ","price":"300円"},{"category":"retail","name":"ギフトボックス","price":"2,400円"}
+  ]
+}
