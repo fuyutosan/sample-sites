@@ -17,6 +17,15 @@ EXPECTED = {
     "06-afterglow.html": {"h1": "午後の余白に、深い一杯。", "hero": "assets/images/cheesecake-tart.webp", "body_class": "concept-afterglow", "order": ["top", "seasonal", "menu", "space", "today", "story", "access", "morning", "faq", "final"]},
 }
 
+EXPECTED_HEADLINE_LINES = {
+    "01-hikari-editorial.html": ["朝の光を、", "一杯に。"],
+    "02-daily-utility.html": ["迷わず、", "今日の", "一杯へ。"],
+    "03-shiro-sumi.html": ["白に、", "香りを置く。"],
+    "04-local-journal.html": ["街の朝を、", "ここから。"],
+    "05-roast-lab.html": ["味を、", "選べる", "言葉に。"],
+    "06-afterglow.html": ["午後の", "余白に、", "深い一杯。"],
+}
+
 
 def read(name: str) -> str:
     return (ROOT / name).read_text(encoding="utf-8")
@@ -57,6 +66,21 @@ class FlagshipTests(unittest.TestCase):
             self.assertEqual(order, expected["order"], filename)
             orders.append(tuple(order))
         self.assertEqual(len(set(orders)), 6)
+
+    def test_hero_headlines_use_intentional_non_wrapping_lines(self):
+        css = read("flagship.css")
+        self.assertRegex(css, r"\.headline-line\s*\{[^}]*display\s*:\s*block")
+        self.assertRegex(css, r"\.headline-line\s*\{[^}]*white-space\s*:\s*nowrap")
+        for filename, expected_lines in EXPECTED_HEADLINE_LINES.items():
+            html = read(filename)
+            h1 = re.search(r"<h1>(.*?)</h1>", html, re.I | re.S)
+            self.assertIsNotNone(h1, filename)
+            lines = re.findall(
+                r'<span\s+class=["\']headline-line["\']>(.*?)</span>',
+                h1.group(1),
+                re.I | re.S,
+            )
+            self.assertEqual(lines, expected_lines, filename)
 
     def test_every_page_contains_canonical_shop_facts_and_menu(self):
         facts = [
