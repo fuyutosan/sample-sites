@@ -120,6 +120,7 @@ class FlagshipTests(unittest.TestCase):
         ]
         for filename in EXPECTED:
             html = read(filename)
+            html = re.sub(r"</?span\b[^>]*>", "", html, flags=re.I)
             visible = re.sub(r"<style\b.*?</style>|<script\b.*?</script>|<[^>]+>", " ", html, flags=re.I | re.S)
             for fact in facts:
                 self.assertIn(fact, visible, f"{filename}: {fact}")
