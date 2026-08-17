@@ -94,6 +94,24 @@ class FlagshipTests(unittest.TestCase):
         for filename in EXPECTED:
             self.assertRegex(read(filename), r'<html\s+lang=["\']ja["\']', filename)
 
+    def test_semantic_phrases_are_kept_together_on_mobile(self):
+        css = read("flagship.css")
+        self.assertRegex(css, r"\.keep-phrase\s*\{[^}]*white-space\s*:\s*nowrap")
+        for filename in EXPECTED:
+            html = read(filename)
+            self.assertIn('<span class="keep-phrase">一日を整える</span>', html, filename)
+            self.assertIn('<span class="keep-phrase">東京都架空区</span>', html, filename)
+            self.assertIn('<span class="keep-phrase">みなと中央2-14-6</span>', html, filename)
+            self.assertIn('<span class="keep-phrase">みなと中央駅</span>', html, filename)
+        self.assertIn(
+            '<span class="keep-phrase">みなと中央</span>',
+            read("01-hikari-editorial.html"),
+        )
+        self.assertIn(
+            '<span class="keep-phrase">午後を急がない</span>',
+            read("06-afterglow.html"),
+        )
+
     def test_every_page_contains_canonical_shop_facts_and_menu(self):
         facts = [
             self.shop["station"], *self.shop["hours"].values(),
